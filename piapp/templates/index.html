@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="UTF-8">
+	<title>Plant Monitor App</title>
+	<style>
+		/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white; /* Ensure text is visible on black backgrounds */
+}
+
+body {
+    background-color: black; /* Set the body background to black */
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Title Styling */
+.title {
+    color: #27ae60;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Sensor Display Grid */
+.sensor-display {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Individual Sensor Item */
+.sensor-item {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #333; /* Dark background for sensor items */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sensor-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Label and Value Styling */
+.sensor-item label {
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+    color: #27ae60; /* Adjust color for visibility */
+}
+
+.sensor-item div {
+    font-size: 1.4rem;
+    color: #16a085; /* Adjust color for visibility */
+}
+
+/* Update Button Styling */
+.update-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Button background */
+    color: white; /* Text color for visibility */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    outline: none;
+}
+
+.update-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.update-button:focus {
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+}
+
+/* Responsive Grid */
+@media (max-width: 600px) {
+    .sensor-display {
+        grid-template-columns: 1fr;
+    }
+}
+
+	</style>
+</head>
+<body>
+	<!-- <h1>DHT11 Sensor Data</h1>
+	<p>Temperature: 27.3 C </p>
+	<p>Humidity: 31% </p> -->
+	<!-- <h1>DHT11 Sensor Data</h1>
+	<p>Temperature: {{data.temp}} C</p>
+	<p>Humidity: {{data.humidity}} %</p> -->
+	<div class="container">
+		<h1 class="title">Plant Monitor Dashboard</h1>
+		<div class="sensor-display">
+			<div class="sensor-item">
+				<label>Temperature</label>
+				<p>{{data.temperature}} C</p>
+			</div>
+			<div class="sensor-item">
+				<label>Air Humidity</label>
+				<p>{{data.airhumidity}} %</p>
+			</div>
+			<div class="sensor-item">
+				<label>Light</label>
+				<p>{{data.light}}</p>
+			</div>
+			<div class="sensor-item">
+				<label>System Status</label>
+				<p>On</p>
+			</div>
+		</div>
+		<button class="update-button" onClick = "location.reload()">Update</button>
+	</div>
+</body>
+</html>
